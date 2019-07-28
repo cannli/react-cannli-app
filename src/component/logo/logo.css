@@ -1,0 +1,12 @@
+.logo-container{
+
+    margin-top: 50px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.logoImg{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
