@@ -18,10 +18,15 @@ import * as serviceWorker from './serviceWorker';
 
 const store = createStore(counters, applyMiddleware(thunk))
 
+function Boss() {
+    return <h2>BOSS页面</h2>
+}
+
 ReactDOM.render(
     (<Provider store={store}>
         <BrowserRouter>
             <AuthRoute></AuthRoute>
+            <Route path='/boss' exact component={Boss}></Route>
             <Route path='/login' exact component={Login}></Route>
             <Route path='/register' component={Register}></Route>
         </BrowserRouter>
