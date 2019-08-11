@@ -1,6 +1,14 @@
 import React from 'react'
 import {Button, InputItem, List, Radio, WhiteSpace, WingBlank} from 'antd-mobile'
 import Logo from '../../component/logo/Logo.js'
+import {connect} from 'react-redux'
+import {register} from "../../redux/user.redux";
+import {Redirect} from 'react-router-dom'
+
+@connect(
+    state => state.user,
+    {register}
+)
 
 class Register extends React.Component {
     constructor(props) {
@@ -15,7 +23,7 @@ class Register extends React.Component {
     }
 
     register() {
-        console.log(this.state, 'state')
+        this.props.register(this.state)
     }
 
     handleChange(key, val) {
@@ -28,13 +36,16 @@ class Register extends React.Component {
         const RadioItem = Radio.RadioItem
         return (
             <div>
+                {this.props.redirectTo + '444444'}
+                {this.props.redirectTo ? <Redirect to={this.props.redirectTo}/> : null}
                 <Logo></Logo>
                 <h2>注册页面</h2>
                 <WingBlank>
                     <List>
+                        {this.props.msg ? <p className="err-msg">{this.props.msg}</p> : this.props.user}
                         <InputItem onChange={v => this.handleChange('user', v)}>用户</InputItem>
                         <WhiteSpace/>
-                        <InputItem type="password" onChange={v => this.handleChange('wpd', v)}>密码</InputItem>
+                        <InputItem type="password" onChange={v => this.handleChange('pwd', v)}>密码</InputItem>
                         <WhiteSpace/>
                         <InputItem type="password" onChange={v => this.handleChange('repeatpwd', v)}>确认密码</InputItem>
 

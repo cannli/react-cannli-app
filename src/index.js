@@ -5,12 +5,13 @@ import thunk from 'redux-thunk'
 import {Provider} from 'react-redux'
 import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom'
 import './config/axios'
+import './index.css'
 import 'antd-mobile/dist/antd-mobile.css';
 // pages
 import {Login, Register} from './contairer/pages'
 
 import AuthRoute from './component/authRoute/authRoute'
-import counters from './redux/auth/reducer'
+import counters from './redux/reducer'
 
 
 import * as serviceWorker from './serviceWorker';
