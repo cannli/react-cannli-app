@@ -36,7 +36,6 @@ class Register extends React.Component {
         const RadioItem = Radio.RadioItem
         return (
             <div>
-                {this.props.redirectTo + '444444'}
                 {this.props.redirectTo ? <Redirect to={this.props.redirectTo}/> : null}
                 <Logo></Logo>
                 <h2>注册页面</h2>
@@ -58,7 +57,7 @@ class Register extends React.Component {
                                    onChange={v => this.handleChange('type', 'boss')}
                         >BOSS</RadioItem>
                     </List>
-                    <Button type="primary">登录</Button>
+                  {/*  <Button type="primary">登录</Button>*/}
                     <WhiteSpace/>
                     <Button onClick={this.register} type="primary">注册</Button>
                 </WingBlank>
