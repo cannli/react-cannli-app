@@ -14,7 +14,6 @@ const initState = {
 
 // redux
 export function user(state = initState, action) {
-    console.log(action, 'action')
     switch (action.type) {
         case REFISTER_SUCCESS:
             return {...state, msg: '', redirectTo: getRedirectPath(action.payload), isAuth: true, ...action.payload}
@@ -28,7 +27,6 @@ export function user(state = initState, action) {
 }
 
 function registerSuccess(data) {
-    console.log(getRedirectPath(data),999999)
     return {type: REFISTER_SUCCESS, payload: data}
 }
 
@@ -45,7 +43,6 @@ export function register({user, pwd, repeatpwd, type}) {
     }
     return dispatch => {
         axios.post('/user/register', {user, pwd, type}).then(res => {
-            console.log(res.status +'===' +  res.code)
             if (res.status === 200 && res.data.code === 0) {
                 dispatch(registerSuccess({user, pwd, type}))
             } else {
