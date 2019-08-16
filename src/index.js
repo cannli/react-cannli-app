@@ -8,26 +8,19 @@ import './config/axios'
 import './index.css'
 import 'antd-mobile/dist/antd-mobile.css';
 // pages
-import {Login, Register} from './contairer/pages'
-
+import {Login, Register, BossInfo} from './contairer/pages'
 import AuthRoute from './component/authRoute/authRoute'
+
 import counters from './redux/reducer'
 
-
 import * as serviceWorker from './serviceWorker';
-
-
 const store = createStore(counters, applyMiddleware(thunk))
-
-function Boss() {
-    return <h2>BOSS页面</h2>
-}
 
 ReactDOM.render(
     (<Provider store={store}>
         <BrowserRouter>
             <AuthRoute></AuthRoute>
-            <Route path='/boss' exact component={Boss}></Route>
+            <Route path='/bossinfo' exact component={BossInfo}></Route>
             <Route path='/login' exact component={Login}></Route>
             <Route path='/register' component={Register}></Route>
         </BrowserRouter>
