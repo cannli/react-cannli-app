@@ -13,7 +13,7 @@ Router.get('/list', function (req, res) {
         return res.json(doc)
     })
 })
-
+// 登陆
 Router.post('/login', (req, res) => {
     const {user, pwd} = req.body
     User.findOne({user, pwd: md5Pwb(pwd)}, _filter, (err, doc) => {
@@ -25,14 +25,13 @@ Router.post('/login', (req, res) => {
     })
 })
 
+// 注册
 Router.post('/register', function (req, res) {
-    console.log(req.body)
     const {user, pwd, type} = req.body
     User.findOne({user}, function (err, doc) {
         if (doc) {
             return res.json({code: 1, msg: '用户名重复'})
         }
-
         const userModel = new User({user, pwd: md5Pwb(pwd), type})
         userModel.save(function (e, d) {
             if (e) {
@@ -42,13 +41,19 @@ Router.post('/register', function (req, res) {
             res.cookie('userid', _id)
             return res.json({code: 0, msg: '添加成功', data: {user, _id, type}})
         })
+    })
+})
 
-        // User.create({user, pwd: md5Pwb(pwd), type}, function (err, data) {
-        //     if (err) {
-        //         return res.json({code: 1, msg: '后端出错了'})
-        //     }
-        //     return res.json({code: 0, msg: '添加成功'})
-        // })
+// 更新
+Router.post('/update', (req, res) => {
+    const {userid} = req.cookies
+    if (!userid) {
+        return res.json({code: 1})
+    }
+    const body = req.body
+    User.findByIdAndUpdate(userid, body, (err, doc) => {
+        const data = Object.assign({}, {user: doc.user, type: doc.type}, body)
+        return res.json({code: 0, data})
     })
 })
 
