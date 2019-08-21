@@ -21,6 +21,7 @@ Router.post('/login', (req, res) => {
             return res.json({code: 1, msg: '用户名或密码错误'})
         }
         res.cookie('userid', doc._id)
+        console.log(doc,'doc')
         return res.json({code: 0, data: doc})
     })
 })

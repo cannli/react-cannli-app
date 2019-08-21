@@ -12,6 +12,7 @@ axios.interceptors.response.use(function (config) {
     setTimeout(function () {
         Toast.hide()
     },200)
+    console.log(config,'config')
     return config
 
 })
