@@ -14,3 +14,8 @@ code {
 .err-msg{
   color: #ff0000;
 }
+.am-tabs-tab-bar-wrap{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
