@@ -19,3 +19,8 @@ code {
   bottom: 0;
   width: 100%;
 }
+.fixd-header .am-navbar{
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
