@@ -7,24 +7,17 @@ import Usercard from '../usercard/usercard'
     state => state.chatuser,
     {getUserList}
 )
-class Boss extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            data: []
-        }
-    }
-
+class Genuis extends React.Component {
     componentDidMount() {
-        this.props.getUserList('genius')
+        this.props.getUserList('boss')
     }
 
     render() {
-        console.log(this.props.userlist, 'dataBoss')
+        console.log(this.props.userlist, 'genius')
         return (
             <Usercard userlist={this.props.userlist}></Usercard>
         )
     }
 }
 
-export default Boss
+export default Genuis
