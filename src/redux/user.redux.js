@@ -12,13 +12,12 @@ const initState = {
     isAuth: '',
     msg:'',
     user: '',
-   // pwd: '',
-   // repeatpwd: '',
     type: ''
 }
 
 // redux
 export function user(state = initState, action) {
+    console.log(state,'statestate')
     switch (action.type) {
         // case REFISTER_SUCCESS:
         //     return {...state, msg: '', redirectTo: getRedirectPath(action.payload), isAuth: true, ...action.payload}
@@ -32,7 +31,7 @@ export function user(state = initState, action) {
         case ERROR_MSG:
             return {...state, isAuth: false, msg: action.msg}
         case LOGOUT:
-            return {...state, redirectTo: '/login'}
+            return {...initState, redirectTo: '/login'}
         default:
             return state
     }

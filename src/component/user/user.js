@@ -38,6 +38,7 @@ class User extends React.Component {
             height: 50,
             borderRadius: 50
         }
+        console.log(props,'propspropsprops')
         return props.user ? (
             <div>
                 <Result

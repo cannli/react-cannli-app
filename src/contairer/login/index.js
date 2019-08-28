@@ -4,6 +4,27 @@ import {Redirect} from 'react-router-dom'
 import Logo from '../../component/logo/Logo.js'
 import {connect} from 'react-redux'
 import {login} from "../../redux/user.redux";
+
+//高阶组件
+
+function wrapperHello(Comp) {
+    class WrapComp extends Comp{
+        componentDidMount(){
+            console.log('高级组件新增的生命周期')
+        }
+        render(){
+            return <Comp/>
+        }
+    }
+    return WrapComp
+}
+@wrapperHello
+class Hello extends React.Component{
+    render(){
+        return <h2>高阶组件</h2>
+    }
+}
+
 @connect(
     state => state.user,
     {login}
@@ -36,6 +57,7 @@ class Register extends React.Component {
     render() {
         return (
             <div>
+                <Hello></Hello>
                 {this.props.redirectTo ? <Redirect to={this.props.redirectTo}/> : null}
                 <Logo></Logo>
                 <h2>注册页面</h2>
