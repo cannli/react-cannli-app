@@ -11,6 +11,7 @@ import 'antd-mobile/dist/antd-mobile.css';
 import {BossInfo, GeniusInfo, Login, Register} from './contairer/pages'
 import AuthRoute from './component/authRoute/authRoute'
 import Dashboard from './component/dashboard/Dashboard'
+import Chat from './component/chat/chat'
 
 import counters from './redux/reducer'
 
@@ -27,6 +28,7 @@ ReactDOM.render(
                 <Route path='/geniusInfo' exact component={GeniusInfo}></Route>
                 <Route path='/login' exact component={Login}></Route>
                 <Route path='/register' component={Register}></Route>
+                <Route path='/chat/:user' component={Chat}></Route>
                 <Route component={Dashboard}></Route>
             </Switch>
         </BrowserRouter>

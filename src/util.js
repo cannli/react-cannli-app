@@ -8,3 +8,8 @@
     }
     return url
 }
+
+// 对应 from,to
+export function getChatId(userId,targetId) {
+    return [userId,targetId].sort().join('_')
+}

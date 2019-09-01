@@ -11,10 +11,18 @@ const models = {
         'avatar': {type: String, 'require': true},  // 头像
         'desc': {type: String, 'require': true},    // 个人简介或职位简介
         'title': {type: String, 'require': true},   // 职位名
-        'company': {type: String, 'require': true}, // 如果你是boss 还有2个字段
-        'money': {type: String, 'require': true},
+        // 如果你是boss，还有2 个字段
+        'company': {type: String},
+        'money': {type: String},
     },
-    chat: {}
+    chat: {
+        'chatid':{type: String, 'require': true},
+        'from':{type: String, 'require': true},
+        'to':{type: String,'require': true},
+        'read':{type: Boolean, default: false},
+        'content':{type: String, 'require': true, default: ''},
+        'create_time':{type: Number, default: new Date().getTime()}
+    }
 }
 
 for (let m in models) {
@@ -22,6 +30,7 @@ for (let m in models) {
 }
 module.exports = {
     getModel: function (name) {
+        console.log(name,'name model')
         return mongoose.model(name)
     }
 }

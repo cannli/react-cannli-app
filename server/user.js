@@ -3,9 +3,35 @@ const utils = require('utility')
 const Router = express.Router()
 const model = require('./model')
 const User = model.getModel('user')
+const Chat = model.getModel('chat')
 
 const _filter = {'pwd': 0, '__v': 0}
+// 聊天相关
+Router.get('/getmsglist', function (req, res) {
+    const userid = req.cookies.userid
+    User.find({}, function (e, userdoc) {
+        const users = {}
+        if (!e) {
+            userdoc.forEach(v => {
+                users[v._id] = {name: v.user, avatar: v.avatar}
+            })
+            Chat.find({'$or': [{from: userid}, {to: userid}]}, function (err, doc) {
+                if (!err) {
+                    //   console.log(doc,'getmsglist-server')
+                    return res.json({code: 0, msgs: doc, users: users})
+                }
+            })
+        }
+    })
+    // Chat.remove({}, function (err, res) {})
+    // Chat.find({}, (err, doc) => {
+    //     if (!err) {
+    //         return res.json({code: 0, msgs: doc})
+    //     }
+    // })
+})
 
+// 根据type获取user
 Router.get('/list', function (req, res) {
     //   User.remove({}, function (err, res) {})
     const type = req.query.type

@@ -1,8 +1,12 @@
 import React from 'react'
 import {Card, WingBlank} from 'antd-mobile'
 import {WhiteSpace} from "antd-mobile/lib/index";
-
+import {withRouter} from 'react-router-dom'
+@withRouter
 class Usercard extends React.Component {
+    handleClick(v){
+        this.props.history.push(`/chat/${v._id}`)
+    }
     render() {
         const Header = Card.Header
         const Body = Card.Body
@@ -10,7 +14,10 @@ class Usercard extends React.Component {
             <WingBlank>
                 <WhiteSpace/>
                 {this.props.userlist.length>0&&this.props.userlist.map(v => (
-                    v.avatar ? (<Card key={v._id}>
+                    v.avatar ? (<Card
+                            onClick={()=>this.handleClick(v)}
+                            key={v._id}
+                        >
                             <Header
                                 title={v.user}
                                 thumb={require(`../../assets/img/avatar/${v.avatar}.jpg`)}

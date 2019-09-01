@@ -8,14 +8,23 @@ import Boss from '../../component/boss/boss'
 import Genius from '../../component/genius/genius'
 import User from '../../component/user/user'
 
+import {getMsgList, recvMsg} from '../../redux/chat.redux'
 function Msg() {
     return <h2>Msg</h2>
 }
 
 @connect(
-    state => state
+    state => state,
+    {getMsgList, recvMsg}
 )
 class Dashboard extends React.Component {
+
+    componentDidMount() {
+        if (!this.props.chat.chatmsg.length) {
+            this.props.getMsgList()
+            this.props.recvMsg()
+        }
+    }
 
     render() {
         const pathName = this.props.location.pathname
