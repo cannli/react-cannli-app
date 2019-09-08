@@ -11,8 +11,6 @@ const socket = io('ws://localhost:9093')
     state => state,
     {getMsgList, sendMsg, recvMsg}
 )
-    let dd ='Grinning Face   Grinning Face With Big Eyes   Grinning Face With Smiling Eyes   Beaming Face With Smiling Eyes   Grinning Squinting Face   Grinning Face With Sweat   Rolling on the Floor Laughing   Face With Tears of Joy   Slightly Smiling Face   Upside-Down Face   Winking Face   Smiling Face With Smiling Eyes   Smiling Face With Halo   Smiling Face With Hearts   Smiling Face With Heart-Eyes   Star-Struck   Face Blowing a Kiss   Kissing Face   Smiling Face   Kissing Face With Closed Eyes   Kissing Face With Smiling Eyes   Face Savoring Food   Face With Tongue   Winking Face With Tongue   Zany Face   Squinting Face With Tongue   Money-Mouth Face   Hugging Face   Face With Hand Over Mouth   Shushing Face   Thinking Face   Zipper-Mouth Face   Face With Raised Eyebrow   Neutral Face   Expressionless Face   Face Without Mouth   Smirking Face   ' +
-    'Unamused Face   Face With Rolling Eyes   Grimacing Face   Lying Face   Relieved Face'
 class Chat extends React.Component {
     constructor(props) {
         super(props)
