@@ -26,6 +26,7 @@ class BossInfo extends React.Component{
     }
 
     selectAvatar(imgname) {
+        console.log(imgname,'imgname')
         this.setState({
             avatar: imgname
         })
