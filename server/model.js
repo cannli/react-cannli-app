@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 // 链接 Mongo
 const DB_URL = 'mongodb://127.0.0.1:27017/my-app'
-mongoose.connect(DB_URL)
+mongoose.connect(DB_URL, { useNewUrlParser: true })
 
 const models = {
     user: {
